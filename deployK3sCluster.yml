@@ -1,0 +1,21 @@
+- hosts:
+  - server
+
+  remote_user: vagrant
+  pre_tasks:
+    - name: 'install python2'
+      raw: sudo yum -y install python
+    
+  roles:
+    - k3s
+
+- hosts:
+  - agent
+
+  remote_user: vagrant
+  pre_tasks:
+    - name: 'install python2'
+      raw: sudo yum -y install python
+    
+  roles:
+    - k3s_agent
