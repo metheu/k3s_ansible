@@ -1,0 +1,8 @@
+# vagrant stuff
+.vagrant/
+
+# My scratchfile
+scratchfile.txt
+
+# ansible .retry files
+*.retry

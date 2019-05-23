@@ -1,0 +1,6 @@
+---
+# defaults file for k3s
+k3s_release_url: https://github.com/rancher/k3s/releases/download/v0.5.0/k3s
+k3s_tmp_destination: /tmp/k3s
+k3s_final_destination: /usr/local/bin/
+k3s_service_unit_env_file: /etc/systemd/system/k3s.service.env
