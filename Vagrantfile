@@ -25,17 +25,28 @@ Vagrant.configure("2") do |config|
       end
     end
 
-    config.vm.define "k3sNode" do |m|
+    config.vm.define "k3sNode1" do |m|
       m.vm.box = "bento/centos-7.5"
-      m.vm.hostname = 'k3sNode'
+      m.vm.hostname = 'k3sNode1'
       
     
       m.vm.network :"public_network", bridge: "wlp1s0", ip: "192.168.0.201"
     
       m.vm.provider :virtualbox do |v|
         v.customize ["modifyvm", :id, "--memory", 1048]
-        v.customize ["modifyvm", :id, "--name", "k3sNode"]
+        v.customize ["modifyvm", :id, "--name", "k3sNode1"]
+      end
+    end
+    config.vm.define "k3sNode2" do |m|
+      m.vm.box = "bento/centos-7.5"
+      m.vm.hostname = 'k3sNode2'
+      
+    
+      m.vm.network :"public_network", bridge: "wlp1s0", ip: "192.168.0.202"
+    
+      m.vm.provider :virtualbox do |v|
+        v.customize ["modifyvm", :id, "--memory", 1048]
+        v.customize ["modifyvm", :id, "--name", "k3sNode2"]
       end
     end
   end
-  
