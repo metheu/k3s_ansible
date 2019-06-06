@@ -8,4 +8,4 @@ scratchfile.txt
 *.retry
 
 # python k3s_env
-./k3s_env
+./k3s_env/
