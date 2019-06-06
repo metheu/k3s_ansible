@@ -6,3 +6,6 @@ scratchfile.txt
 
 # ansible .retry files
 *.retry
+
+# python k3s_env
+./k3s_env
