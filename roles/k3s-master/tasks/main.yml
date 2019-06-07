@@ -35,14 +35,6 @@
   when: k3s_service_unit_env_file_touched
   notify: reload_deamon_and_restart_service
 
-- name: k3s service started
-  become: yes
-  systemd:
-      name: k3s
-      state: started
-      enabled: yes
-      daemon_reload: yes
-
 - name: fetch node_token from server and save locally under here/
   become: yes
   fetch:
