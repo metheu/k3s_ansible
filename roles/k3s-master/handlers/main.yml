@@ -1,0 +1,8 @@
+---
+# handlers file for k3s-master
+- name: reload_deamon_and_restart_service
+  become: yes
+  systemd:
+      name: k3s
+      state: restarted
+      daemon_reload: yes
