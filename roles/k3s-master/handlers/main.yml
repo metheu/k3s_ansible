@@ -5,4 +5,12 @@
   systemd:
       name: k3s
       state: restarted
+      enabled: yes
       daemon_reload: yes
+
+- name: fetch_node_token_from_server_and_save_locally
+  become: yes
+  fetch:
+      src: /var/lib/rancher/k3s/server/node-token
+      dest: ../server_node_token/
+      flat: yes

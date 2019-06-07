@@ -32,12 +32,8 @@
       src: templates/k3s.service.j2
       dest: /etc/systemd/system/k3s.service
       mode: 0644
+  register: k3s_service_copied
   when: k3s_service_unit_env_file_touched
-  notify: reload_deamon_and_restart_service
-
-- name: fetch node_token from server and save locally under here/
-  become: yes
-  fetch:
-      src: /var/lib/rancher/k3s/server/node-token
-      dest: ../server_node_token/
-      flat: yes
+  notify:
+      - reload_deamon_and_restart_service
+      - fetch_node_token_from_server_and_save_locally
