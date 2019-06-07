@@ -7,7 +7,7 @@ python:
 services:
   - docker
 install:
-  - pip install wheel molecule==2.19 ansible==2.7.11 docker
+  - pip install wheel setuptools==18.5 molecule==2.19 ansible==2.7.11 docker
 script:
   - molecule --version
   - ansible --version
