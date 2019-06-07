@@ -12,3 +12,6 @@ script:
   - molecule --version
   - ansible --version
   - cd roles/k3s-master && molecule test
+
+notifications:
+  slack: mattgroup-workspace:lC4Xr1YlXE07H4u3go6mrkzU
