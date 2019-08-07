@@ -1,0 +1,30 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: vagrant
+  provider:
+    name: virtualbox
+lint:
+  name: yamllint
+platforms:
+  - name: instance
+    box: "bento/centos-7.5"
+    memory: 2048
+    cpus: 2
+    instances:
+      - name: test-role-k3smaster-01
+    interfaces:
+      - network_name: public_network
+        type: static
+        bridge: "en0: Wi-Fi (Wireless)"
+        ip: "192.168.0.200"
+        auto_config: true
+provisioner:
+  name: ansible
+  lint:
+    name: ansible-lint
+verifier:
+  name: testinfra
+  lint:
+    name: flake8
