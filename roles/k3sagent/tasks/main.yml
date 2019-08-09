@@ -5,7 +5,7 @@
       url: "{{ k3s_release_url }}"
       dest: "{{ k3s_tmp_destination }}"
       mode: 0644
-  register: k3s_binary_downloaded
+      checksum: sha256:https://github.com/rancher/k3s/releases/download/v0.8.0/sha256sum-amd64.txt
 
 - name: Move the binary from tmp to usr/local/bin
   become: yes
@@ -14,8 +14,6 @@
     dest: "{{ k3s_final_destination }}"
     remote_src: yes
     mode: 0755
-  when: k3s_binary_downloaded
-  register: k3s_in_path
 
 - name: Create k3s.service.env file for unit to start
   become: yes
@@ -23,8 +21,7 @@
     content: ""
     dest: "{{ k3s_service_unit_env_file }}"
     owner: root
-  when: k3s_in_path
-  register: k3s_service_unit_env_file_touched
+  
 
 - name: Copy k3s.service to system
   become: yes
@@ -32,12 +29,12 @@
     src: templates/k3s.service.j2
     dest: /etc/systemd/system/k3s.service
     mode: 0644
-  when: k3s_service_unit_env_file_touched
   notify: reload_deamon_and_restart_service
 
-- name: k3s service started
+- name: k3s agent service started
   become: yes
   systemd:
     name: k3s
     state: started
+    enabled: yes
     daemon_reload: yes

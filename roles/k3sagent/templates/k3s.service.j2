@@ -6,7 +6,7 @@ After=network-online.target
 [Service]
 Type=exec
 EnvironmentFile=/etc/systemd/system/k3s.service.env
-ExecStart=/usr/local/bin/k3s agent --flannel-iface eth1 --node-ip {{   ansible_facts['eth1']['ipv4']['address']  }} --server https://{{ ansible_facts['eth1']['ipv4']['address'] }}:6443 --token {{lookup('file', '../../server_node_token/') }}
+ExecStart=/usr/local/bin/k3s agent --flannel-iface eth1 --node-ip {{   ansible_facts['eth1']['ipv4']['address']  }} --server https://{{ k3s_server_ip }}:6443 --token {{lookup('file', '/tmp/k3s_server_node_token/node-token') }}
 KillMode=process
 Delegate=yes
 LimitNOFILE=infinity

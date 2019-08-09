@@ -25,3 +25,4 @@ def test_k3s_svc(host):
     
         assert k3s_svc.is_running
         assert k3s_svc.is_enabled
+

@@ -18,7 +18,7 @@ platforms:
       - network_name: public_network
         type: static
         bridge: "en0: Wi-Fi (Wireless)"
-        ip: "192.168.0.201"
+        ip: "192.168.1.13"
         auto_config: true
 provisioner:
   name: ansible
