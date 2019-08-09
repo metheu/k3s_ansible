@@ -47,5 +47,5 @@
   become: yes
   fetch:
       src: /var/lib/rancher/k3s/server/node-token
-      dest: ../../server_node_token/
+      dest: /tmp/k3s_server_node_token/
       flat: yes

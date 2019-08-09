@@ -6,7 +6,7 @@ After=network-online.target
 [Service]
 Type=notify
 EnvironmentFile=/etc/systemd/system/k3s.service.env
-ExecStart=/usr/local/bin/k3s server --flannel-iface eth1 --node-ip {{   ansible_facts['eth1']['ipv4']['address']  }}
+ExecStart=/usr/local/bin/k3s server --flannel-iface eth1 --node-ip {{   ansible_facts['eth1']['ipv4']['address']  }} --write-kubeconfig-mode 664
 KillMode=process
 Delegate=yes
 LimitNOFILE=infinity

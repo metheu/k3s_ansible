@@ -25,3 +25,11 @@ def test_k3s_svc(host):
     
         assert k3s_svc.is_running
         assert k3s_svc.is_enabled
+
+
+def test_integration_w_worker(host):
+        kubectl_stdout = host.run("k3s kubectl get nodes | wc -l")
+
+        assert kubectl_stdout.rc == 0
+        assert kubectl_stdout.stdout == "3"
+
