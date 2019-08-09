@@ -11,7 +11,6 @@ platforms:
   - name: instance
     box: "bento/centos-7.5"
     memory: 512
-    cpus: 1
     instances:
       - name: test-role-k3smaster-01
     interfaces:

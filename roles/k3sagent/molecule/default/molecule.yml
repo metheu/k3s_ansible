@@ -10,8 +10,7 @@ lint:
 platforms:
   - name: instance
     box: "bento/centos-7.5"
-    memory: 2048
-    cpus: 2 
+    memory: 512
     instances:
       - name: test-role-k3sagent-01
     interfaces:
